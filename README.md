@@ -34,7 +34,25 @@ bazel run @rules_go//go run zmq_client.go
 bazel build //...
 ```
 
-which produces this error:
+which produces this error on Apple M3 Pro [14.6.1 (23G93)]:
+
+```
+INFO: Analyzed 2 targets (110 packages loaded, 12370 targets configured).
+ERROR: /private/var/tmp/_bazel_htie/20c187929af89a4b25912a1ae815433e/external/gazelle~~go_deps~com_github_pebbe_zmq4/BUILD.bazel:3:11: GoCompilePkg external/gazelle~~go_deps~com_github_pebbe_zmq4/zmq4.a failed: (Exit 1): builder failed: error executing GoCompilePkg command (from target @@gazelle~~go_deps~com_github_pebbe_zmq4//:zmq4) bazel-out/darwin_arm64-opt-exec-ST-d57f47055a04/bin/external/rules_go~~go_sdk~bazel-cgo__download_0/builder_reset/builder compilepkg -sdk external/rules_go~~go_sdk~bazel-cgo__download_0 -goroot ... (remaining 69 arguments skipped)
+
+Use --sandbox_debug to see verbose messages from the sandbox and retain the sandbox build root for debugging
+_main/external/gazelle~~go_deps~com_github_pebbe_zmq4/auth.go:19:10: fatal error: 'zmq.h' file not found
+#include <zmq.h>
+         ^~~~~~~
+1 error generated.
+compilepkg: error running subcommand external/rules_go~~go_sdk~bazel-cgo__download_0/pkg/tool/darwin_arm64/cgo: exit status 2
+Use --verbose_failures to see the command lines of failed build steps.
+INFO: Elapsed time: 17.849s, Critical Path: 16.76s
+INFO: 14 processes: 12 internal, 2 darwin-sandbox.
+ERROR: Build did NOT complete successfully
+```
+
+And this error on Ubuntu 20.04:
 
 ```
 INFO: Invocation ID: b63f9e52-c902-4850-9a79-61986a9d69d9
