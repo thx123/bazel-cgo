@@ -1,0 +1,27 @@
+load("@rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "zmq_client",
+    srcs = ["zmq_client.go"],
+    deps = [
+        "@com_github_pebbe_zmq4//:go_default_library",
+    ],
+    cgo = True,
+    cdeps = [
+        # "@libzmq//:libzmq",
+        "@libzmq//:libzmq_headers_only",
+    ],
+)
+
+go_library(
+    name = "zmq_server",
+    srcs = ["zmq_server.go"],
+    deps = [
+        "@com_github_pebbe_zmq4//:go_default_library",
+    ],
+    cgo = True,
+    cdeps = [
+        # "@libzmq//:libzmq",
+        "@libzmq//:libzmq_headers_only",
+    ],
+)
