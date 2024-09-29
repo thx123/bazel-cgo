@@ -2,7 +2,14 @@
 
 ## Steps to show that the Go code works
 
-1. Run server go code:
+1. Clone this repo:
+
+```
+git clone https://github.com/thx123/bazel-cgo.git
+cd bazel-cgo
+```
+
+2. Run server go code:
 
 ```
 go mod init bazel-cgo
@@ -10,7 +17,7 @@ go mod tidy
 go run zmq_server.go
 ```
 
-2. Run client Go code:
+3. Run client Go code:
 
 ```
 go run zmq_client.go
