@@ -1,0 +1,4 @@
+# I am using a local version of the rules_go repo.
+# See: https://github.com/bazelbuild/rules_go/pull/4134
+build --override_repository=rules_go~=/home/fmil/tmp/rules_go
+
