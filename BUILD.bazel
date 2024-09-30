@@ -1,8 +1,6 @@
 load("@rules_foreign_cc//foreign_cc:defs.bzl", "cmake")
 load("@rules_go//go:def.bzl", "go_binary")
 
-package(default_visibility = ["//visibility:public"])
-
 cmake(
     name = "zmq",
     lib_source = "@zeromq//:all_srcs",
