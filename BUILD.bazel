@@ -3,12 +3,8 @@ load("@rules_go//go:def.bzl", "go_binary")
 
 package(default_visibility = ["//visibility:public"])
 
-# Dependency of cppzmq
 cmake(
-    # Note: This exact name is required to make "cppzmq cmake target work.
     name = "zmq",
-    # This uses Ninja to build under the hood, which is faster than make.
-    #generate_args = ["-GNinja"],
     lib_source = "@zeromq//:all_srcs",
     out_static_libs = ["libzmq.a"],
 )
