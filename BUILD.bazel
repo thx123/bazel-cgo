@@ -4,13 +4,12 @@ go_binary(
     name = "zmq_client",
     srcs = ["zmq_client.go"],
     deps = [
+        # Important note, this library is not hermetic.
         "@com_github_pebbe_zmq4//:go_default_library",
     ],
     cgo = True,
     cdeps = [
-        # Including the full library doesn't make it work, either.
-        # "@libzmq//:libzmq",
-        "@libzmq//:libzmq_headers_only",
+        "@libzmq//:libzmq",
     ],
 )
 
@@ -18,12 +17,12 @@ go_binary(
     name = "zmq_server",
     srcs = ["zmq_server.go"],
     deps = [
+        # Important note, this library is not hermetic.
         "@com_github_pebbe_zmq4//:go_default_library",
     ],
     cgo = True,
     cdeps = [
-        # Including the full library doesn't make it work, either.
-        # "@libzmq//:libzmq",
-        "@libzmq//:libzmq_headers_only",
+             "@libzmq//:libzmq",
     ],
 )
+
